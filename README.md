@@ -1,118 +1,70 @@
-# Ambulance Ordering System
+# Getting Started with Create React App
 
-This project is an Ambulance Ordering System with a secure User Registration Module.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Project Overview
+## Available Scripts
 
-The system allows users to register and order ambulance services. It features role-based access control and secure authentication mechanisms.
+In the project directory, you can run:
 
-### Features
+### `npm start`
 
-- User registration and authentication
-- Role-based access control (User, Paramedic, Admin)
-- JWT token-based security
-- Account locking after multiple failed login attempts
-- Secure password storage with BCrypt encryption
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Technologies Used
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-### Backend
-- Spring Boot 3.2.4
-- Spring Security
-- Spring Data JPA
-- JWT for secure token-based authentication
-- H2 Database (can be replaced with MySQL/PostgreSQL in production)
-- Maven for dependency management
+### `npm test`
 
-### Frontend
-- React.js
-- React Router for navigation
-- Axios for API communication
-- Bootstrap for responsive design
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Security Implementation
+### `npm run build`
 
-The system implements several security tactics:
-1. **Authentication**: JWT token-based authentication mechanism
-2. **Authorization**: Role-based access control for different user types
-3. **Data Protection**: Password encryption with BCrypt
-4. **Account Protection**: Locking mechanism after failed attempts
-5. **Secure Communication**: HTTPS ready configuration
-6. **Input Validation**: Server-side input validation for all user inputs
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Getting Started
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-### Prerequisites
-- Java 17 or higher
-- Node.js and npm
-- Maven
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### Running the Application
+### `npm run eject`
 
-#### Backend
-1. Navigate to the backend directory
-2. Run `mvn spring-boot:run`
-3. The backend server will start on http://localhost:8080
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-#### Frontend
-1. Navigate to the frontend directory
-2. Run `npm install` to install dependencies
-3. Run `npm start` to start the development server
-4. The frontend will start on http://localhost:3000
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## API Endpoints
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-### Authentication
-- `POST /api/auth/signup` - Register a new user
-- `POST /api/auth/signin` - Authenticate a user and get a JWT token
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-### Test Endpoints
-- `GET /api/test/all` - Public content
-- `GET /api/test/user` - User content (requires user role)
-- `GET /api/test/paramedic` - Paramedic content
-- `GET /api/test/admin` - Admin content
+## Learn More
 
-## Future Enhancements
-- Add ambulance ordering functionality
-- Implement real-time tracking
-- Add payment integration
-- Add emergency prioritization
-- Implement geolocation features
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-## How to Use Different Roles
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Admin Role
-**Login credentials:** 
-- Username: `admin`
-- Password: `admin123`
+### Code Splitting
 
-**Admin capabilities:**
-- Access to admin dashboard via the "Admin Board" menu item
-- Manage all users (view, edit, delete)
-- Manage all ambulance bookings
-- Change user roles (User → Paramedic → Admin)
-- Configure system settings
-- View statistics and reports
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Paramedic Role
-**Login credentials:**
-- Username: `paramedic`
-- Password: `paramedic123`
+### Analyzing the Bundle Size
 
-**Paramedic capabilities:**
-- Access to paramedic dashboard via the "Paramedic Board" menu item
-- View all incoming ambulance requests
-- Update booking status (Pending → In Progress → Completed)
-- View detailed booking information
-- Assign drivers to bookings
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Regular User
-**Login credentials:**
-- You can register a new account or use:
-- Username: `user123`
-- Password: `password123`
+### Making a Progressive Web App
 
-**User capabilities:**
-- Request emergency or scheduled ambulances
-- View booking history
-- Update personal information 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
