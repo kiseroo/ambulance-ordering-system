@@ -376,8 +376,11 @@ const Home = () => {
                       <td>
                         <span className="d-flex align-items-center">
                           {booking.type === 'Яаралтай' && <i className="fas fa-ambulance text-danger me-2"></i>}
+                          }
                           {booking.type === 'Төлөвлөгөөт' && <i className="fas fa-calendar text-primary me-2"></i>}
+                          }
                           {booking.type === 'Өвчтөн шилжүүлэх' && <i className="fas fa-wheelchair text-info me-2"></i>}
+                          }
                           {booking.type}
                         </span>
                       </td>
