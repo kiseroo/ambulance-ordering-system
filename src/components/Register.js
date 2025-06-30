@@ -43,26 +43,41 @@ const Register = () => {
     
     if (!username) {
       formIsValid = false;
-      formErrors["username"] = "Username is required";
+      formErrors["username"] = "Хэрэглэгчийн нэр шаардлагатай";
     } else if (username.length < 3 || username.length > 20) {
       formIsValid = false;
-      formErrors["username"] = "The username must be between 3 and 20 characters";
+      formErrors["username"] = "Хэрэглэгчийн нэр 3-20 тэмдэгт байх ёстой";
     }
 
     if (!email) {
       formIsValid = false;
-      formErrors["email"] = "Email is required";
+      formErrors["email"] = "И-мэйл хаяг шаардлагатай";
     } else if (!isEmail(email)) {
       formIsValid = false;
-      formErrors["email"] = "This is not a valid email";
+      formErrors["email"] = "И-мэйл хаягийн формат буруу байна";
     }
 
     if (!password) {
       formIsValid = false;
-      formErrors["password"] = "Password is required";
+      formErrors["password"] = "Нууц үг шаардлагатай";
     } else if (password.length < 6 || password.length > 40) {
       formIsValid = false;
-      formErrors["password"] = "The password must be between 6 and 40 characters";
+      formErrors["password"] = "Нууц үг 6-40 тэмдэгт байх ёстой";
+    }
+
+    if (!firstName) {
+      formIsValid = false;
+      formErrors["firstName"] = "Нэр шаардлагатай";
+    }
+
+    if (!lastName) {
+      formIsValid = false;
+      formErrors["lastName"] = "Овог шаардлагатай";
+    }
+
+    if (!phoneNumber) {
+      formIsValid = false;
+      formErrors["phoneNumber"] = "Утасны дугаар шаардлагатай";
     }
 
     setErrors(formErrors);
@@ -85,7 +100,7 @@ const Register = () => {
         phoneNumber
       ).then(
         (response) => {
-          setMessage(response.data.message);
+          setMessage("Бүртгэл амжилттай үүслээ! Одоо нэвтэрч орж болно.");
           setSuccessful(true);
         },
         (error) => {
@@ -104,120 +119,181 @@ const Register = () => {
   };
 
   return (
-    <div className="col-md-12">
-      <div className="card card-container">
-        <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="profile-img"
-          className="profile-img-card"
-        />
-
-        <form onSubmit={handleRegister}>
-          {!successful && (
-            <div>
-              <div className="form-group">
-                <label htmlFor="username">Username</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="username"
-                  value={username}
-                  onChange={onChangeUsername}
-                />
-                {errors.username && (
-                  <div className="alert alert-danger" role="alert">
-                    {errors.username}
-                  </div>
-                )}
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-md-8 col-lg-6">
+          <div className="card-container">
+            <div className="text-center mb-4">
+              <div className="mb-3">
+                <i className="fas fa-user-plus" style={{fontSize: '4rem', color: 'var(--primary-color)'}}></i>
               </div>
-
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="email"
-                  value={email}
-                  onChange={onChangeEmail}
-                />
-                {errors.email && (
-                  <div className="alert alert-danger" role="alert">
-                    {errors.email}
-                  </div>
-                )}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  value={password}
-                  onChange={onChangePassword}
-                />
-                {errors.password && (
-                  <div className="alert alert-danger" role="alert">
-                    {errors.password}
-                  </div>
-                )}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="firstName">First Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="firstName"
-                  value={firstName}
-                  onChange={onChangeFirstName}
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="lastName">Last Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="lastName"
-                  value={lastName}
-                  onChange={onChangeLastName}
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="phoneNumber">Phone Number</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="phoneNumber"
-                  value={phoneNumber}
-                  onChange={onChangePhoneNumber}
-                />
-              </div>
-
-              <div className="form-group">
-                <button className="btn btn-primary btn-block">Sign Up</button>
-              </div>
+              <h2 className="auth-title">📝 Бүртгүүлэх</h2>
+              <p className="auth-subtitle">Шинэ бүртгэл үүсгэж, түргэн тусламжийн үйлчилгээ авна уу</p>
             </div>
-          )}
 
-          {message && (
-            <div className="form-group">
-              <div
-                className={
-                  successful ? "alert alert-success" : "alert alert-danger"
-                }
-                role="alert"
-              >
-                {message}
-              </div>
-            </div>
-          )}
-        </form>
+            <form onSubmit={handleRegister}>
+              {!successful && (
+                <div>
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="form-group">
+                        <label htmlFor="firstName">👤 Нэр</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="firstName"
+                          value={firstName}
+                          onChange={onChangeFirstName}
+                          placeholder="Нэрээ оруулна уу"
+                        />
+                        {errors.firstName && (
+                          <div className="alert alert-danger mt-2" role="alert">
+                            <i className="fas fa-exclamation-triangle me-2"></i>
+                            {errors.firstName}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <div className="col-md-6">
+                      <div className="form-group">
+                        <label htmlFor="lastName">👥 Овог</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="lastName"
+                          value={lastName}
+                          onChange={onChangeLastName}
+                          placeholder="Овгоо оруулна уу"
+                        />
+                        {errors.lastName && (
+                          <div className="alert alert-danger mt-2" role="alert">
+                            <i className="fas fa-exclamation-triangle me-2"></i>
+                            {errors.lastName}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="username">🏷️ Хэрэглэгчийн нэр</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="username"
+                      value={username}
+                      onChange={onChangeUsername}
+                      placeholder="Хэрэглэгчийн нэрээ оруулна уу"
+                    />
+                    {errors.username && (
+                      <div className="alert alert-danger mt-2" role="alert">
+                        <i className="fas fa-exclamation-triangle me-2"></i>
+                        {errors.username}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="email">📧 И-мэйл хаяг</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="email"
+                      value={email}
+                      onChange={onChangeEmail}
+                      placeholder="И-мэйл хаягаа оруулна уу"
+                    />
+                    {errors.email && (
+                      <div className="alert alert-danger mt-2" role="alert">
+                        <i className="fas fa-exclamation-triangle me-2"></i>
+                        {errors.email}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="phoneNumber">📞 Утасны дугаар</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="phoneNumber"
+                      value={phoneNumber}
+                      onChange={onChangePhoneNumber}
+                      placeholder="Утасны дугаараа оруулна уу"
+                    />
+                    {errors.phoneNumber && (
+                      <div className="alert alert-danger mt-2" role="alert">
+                        <i className="fas fa-exclamation-triangle me-2"></i>
+                        {errors.phoneNumber}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="password">🔒 Нууц үг</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      name="password"
+                      value={password}
+                      onChange={onChangePassword}
+                      placeholder="Нууц үгээ оруулна уу"
+                    />
+                    {errors.password && (
+                      <div className="alert alert-danger mt-2" role="alert">
+                        <i className="fas fa-exclamation-triangle me-2"></i>
+                        {errors.password}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="form-group">
+                    <button className="btn btn-primary btn-block">
+                      <i className="fas fa-user-plus me-2"></i>
+                      Бүртгүүлэх
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {message && (
+                <div className="form-group">
+                  <div
+                    className={
+                      successful ? "alert alert-success" : "alert alert-danger"
+                    }
+                    role="alert"
+                  >
+                    <i className={`fas ${successful ? 'fa-check-circle' : 'fa-exclamation-circle'} me-2`}></i>
+                    {message}
+                  </div>
+                </div>
+              )}
+
+              {successful && (
+                <div className="text-center mt-4">
+                  <a href="/login" className="btn btn-primary">
+                    <i className="fas fa-sign-in-alt me-2"></i>
+                    Нэвтрэх хуудас руу очих
+                  </a>
+                </div>
+              )}
+
+              {!successful && (
+                <div className="text-center mt-4">
+                  <p className="mb-2">Бүртгэлтэй юу?</p>
+                  <a href="/login" className="btn btn-outline-primary">
+                    <i className="fas fa-sign-in-alt me-2"></i>
+                    Нэвтрэх
+                  </a>
+                </div>
+              )}
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Register; 
+export default Register;
